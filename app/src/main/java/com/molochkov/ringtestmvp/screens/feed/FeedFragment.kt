@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.molochkov.ringtestmvp.R
 import com.molochkov.ringtestmvp.core.base.BaseFragment
+import com.molochkov.ringtestmvp.data.feed.FeedEntry
 import com.molochkov.ringtestmvp.screens.feed.di.DaggerFeedComponent
 import com.molochkov.ringtestmvp.screens.feed.di.FeedModule
 import com.molochkov.ringtestmvp.screens.feed.ui.FeedAdapter
@@ -15,7 +16,7 @@ import com.molochkov.ringtestmvp.utils.photo.PhotoLoader
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class FeedFragment : BaseFragment() {
+class FeedFragment : BaseFragment(), FeedView {
 
     companion object {
 
@@ -48,13 +49,27 @@ class FeedFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.onAttachView(this)
         setUpList()
+        presenter.getFeed()
+    }
+
+    override fun onDestroyView() {
+        presenter.onDetachView()
+        super.onDestroyView()
+    }
+
+    override fun onFeedLoaded(feed: List<FeedEntry>) {
+        adapter.addItems(feed)
+    }
+
+    override fun onLoadError() {
+        //TODO
     }
 
     private fun setUpList() {
-        adapter = FeedAdapter(photoLoader) { view, url ->
-            //            router.showImage(view, url)
-            //TODO
+        adapter = FeedAdapter(photoLoader) { url ->
+            presenter.showImage(url)
         }
         listRv.layoutManager = LinearLayoutManager(activity)
         listRv.adapter = adapter

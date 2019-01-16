@@ -31,5 +31,5 @@ class MainActivityModule(private val activity: MainActivity) {
     @Provides
     @ActivityScope
     fun provideNavigationHolder(): NavigationHolder =
-        ActivityNavigationHolder(activity.supportFragmentManager, R.id.container)
+        ActivityNavigationHolder(activity.supportFragmentManager, R.id.mainFrame)
 }

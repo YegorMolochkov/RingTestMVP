@@ -3,7 +3,6 @@ package com.molochkov.ringtestmvp.screens.feed.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.molochkov.ringtestmvp.R
 import com.molochkov.ringtestmvp.data.feed.FeedEntry
@@ -12,7 +11,7 @@ import kotlinx.android.synthetic.main.item_feed.view.*
 import java.util.concurrent.TimeUnit
 
 class FeedAdapter(private val photoLoader: PhotoLoader,
-                  private val clickListener: (ImageView, String) -> Unit) :
+                  private val clickListener: (String) -> Unit) :
     RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
 
     private val feed: MutableList<FeedEntry> = mutableListOf()
@@ -47,7 +46,7 @@ class FeedAdapter(private val photoLoader: PhotoLoader,
             image?.let { url ->
                 photoLoader.loadPhoto(url, view.image)
                 view.image.setOnClickListener {
-                    clickListener(view.image, url)
+                    clickListener(url)
                 }
             }
         }
