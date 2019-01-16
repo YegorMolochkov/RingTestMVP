@@ -1,7 +1,7 @@
 package com.molochkov.ringtestmvp.screens.main.navigation
 
 import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
-import com.molochkov.ringtestmvp.screens.feed.FeedFragment
+import com.molochkov.ringtestmvp.screens.feed.ui.FeedFragment
 
 class ActivityMainRouter(private val holder: NavigationHolder) : MainRouter {
 

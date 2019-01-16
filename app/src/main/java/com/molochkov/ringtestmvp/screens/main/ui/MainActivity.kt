@@ -1,4 +1,4 @@
-package com.molochkov.ringtestmvp.screens.main
+package com.molochkov.ringtestmvp.screens.main.ui
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
@@ -7,6 +7,7 @@ import com.molochkov.ringtestmvp.core.RingApplication
 import com.molochkov.ringtestmvp.screens.main.di.DaggerMainActivityComponent
 import com.molochkov.ringtestmvp.screens.main.di.MainActivityComponent
 import com.molochkov.ringtestmvp.screens.main.di.MainActivityModule
+import com.molochkov.ringtestmvp.screens.main.domain.MainPresenter
 import javax.inject.Inject
 
 class MainActivity : FragmentActivity(), MainView {

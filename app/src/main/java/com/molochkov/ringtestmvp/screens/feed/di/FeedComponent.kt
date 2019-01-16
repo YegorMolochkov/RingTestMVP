@@ -1,7 +1,7 @@
 package com.molochkov.ringtestmvp.screens.feed.di
 
 import com.molochkov.ringtestmvp.core.di.annotations.ScreenScope
-import com.molochkov.ringtestmvp.screens.feed.FeedFragment
+import com.molochkov.ringtestmvp.screens.feed.ui.FeedFragment
 import com.molochkov.ringtestmvp.screens.main.di.MainActivityComponent
 import dagger.Component
 

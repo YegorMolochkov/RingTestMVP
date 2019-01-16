@@ -6,8 +6,8 @@ import com.molochkov.ringtestmvp.core.di.annotations.ActivityContext
 import com.molochkov.ringtestmvp.core.di.annotations.ActivityScope
 import com.molochkov.ringtestmvp.core.navigation.ActivityNavigationHolder
 import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
-import com.molochkov.ringtestmvp.screens.main.MainActivity
-import com.molochkov.ringtestmvp.screens.main.MainPresenter
+import com.molochkov.ringtestmvp.screens.main.ui.MainActivity
+import com.molochkov.ringtestmvp.screens.main.domain.MainPresenter
 import com.molochkov.ringtestmvp.screens.main.navigation.ActivityMainRouter
 import com.molochkov.ringtestmvp.screens.main.navigation.MainRouter
 import com.molochkov.ringtestmvp.utils.photo.GlidePhotoLoader

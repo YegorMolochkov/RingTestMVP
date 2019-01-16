@@ -1,4 +1,4 @@
-package com.molochkov.ringtestmvp.screens.details
+package com.molochkov.ringtestmvp.screens.details.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

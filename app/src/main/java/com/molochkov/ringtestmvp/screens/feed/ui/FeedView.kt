@@ -1,4 +1,4 @@
-package com.molochkov.ringtestmvp.screens.feed
+package com.molochkov.ringtestmvp.screens.feed.ui
 
 import com.molochkov.ringtestmvp.core.base.BaseView
 import com.molochkov.ringtestmvp.data.feed.FeedEntry

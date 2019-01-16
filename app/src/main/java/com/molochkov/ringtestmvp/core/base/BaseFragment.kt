@@ -1,7 +1,7 @@
 package com.molochkov.ringtestmvp.core.base
 
 import androidx.fragment.app.Fragment
-import com.molochkov.ringtestmvp.screens.main.MainActivity
+import com.molochkov.ringtestmvp.screens.main.ui.MainActivity
 
 abstract class BaseFragment : Fragment() {
 

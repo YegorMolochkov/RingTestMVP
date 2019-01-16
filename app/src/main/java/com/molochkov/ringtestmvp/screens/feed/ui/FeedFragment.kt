@@ -1,4 +1,4 @@
-package com.molochkov.ringtestmvp.screens.feed
+package com.molochkov.ringtestmvp.screens.feed.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.molochkov.ringtestmvp.core.base.BaseFragment
 import com.molochkov.ringtestmvp.data.feed.FeedEntry
 import com.molochkov.ringtestmvp.screens.feed.di.DaggerFeedComponent
 import com.molochkov.ringtestmvp.screens.feed.di.FeedModule
-import com.molochkov.ringtestmvp.screens.feed.ui.FeedAdapter
+import com.molochkov.ringtestmvp.screens.feed.domain.FeedPresenter
 import com.molochkov.ringtestmvp.utils.photo.PhotoLoader
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
