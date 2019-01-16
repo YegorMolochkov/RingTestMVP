@@ -6,6 +6,6 @@ import com.molochkov.ringtestmvp.screens.feed.FeedFragment
 class ActivityMainRouter(private val holder: NavigationHolder) : MainRouter {
 
     override fun showStartScreen() {
-        holder.showFragment(FeedFragment.newInstance())
+        holder.showFragment(FeedFragment.newInstance(), false)
     }
 }

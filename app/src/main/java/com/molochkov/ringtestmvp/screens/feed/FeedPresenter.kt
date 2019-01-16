@@ -6,7 +6,7 @@ import com.molochkov.ringtestmvp.screens.feed.domain.FeedInteractor
 import com.molochkov.ringtestmvp.screens.feed.navigation.FeedRouter
 
 class FeedPresenter(private val interactor: FeedInteractor,
-                    private val router: FeedRouter) : BasePresenter<FeedView>(interactor) {
+                    private val router: FeedRouter) : BasePresenter<FeedView>() {
 
     fun getFeed() = interactor.getFeed({
         mvpView?.onFeedLoaded(it)
@@ -15,4 +15,9 @@ class FeedPresenter(private val interactor: FeedInteractor,
     })
 
     fun showImage(view: ImageView, imageUrl: String) = router.showImage(view, imageUrl)
+
+    override fun onDetachView() {
+        super.onDetachView()
+        interactor.unsubscribe()
+    }
 }

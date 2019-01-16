@@ -7,10 +7,12 @@ import androidx.fragment.app.FragmentManager
 class ActivityNavigationHolder(private val manager: FragmentManager,
                                private val containerId: Int) : NavigationHolder {
 
-    override fun showFragment(fragment: Fragment) {
-        manager.beginTransaction()
-            .replace(containerId, fragment)
-            .commit()
+    override fun showFragment(fragment: Fragment, addToBackStack: Boolean) {
+        val transaction = manager.beginTransaction().apply {
+            replace(containerId, fragment)
+            if (addToBackStack) addToBackStack(fragment::class.java.simpleName)
+        }
+        transaction.commit()
     }
 
     override fun showFragmentWithSharedView(fragment: Fragment,

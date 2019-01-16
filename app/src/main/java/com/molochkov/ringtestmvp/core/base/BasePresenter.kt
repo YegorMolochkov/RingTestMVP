@@ -1,6 +1,6 @@
 package com.molochkov.ringtestmvp.core.base
 
-abstract class BasePresenter<T : BaseView>(private val interactor: BaseInteractor) {
+abstract class BasePresenter<T : BaseView> {
 
     protected var mvpView: T? = null
 
@@ -10,6 +10,5 @@ abstract class BasePresenter<T : BaseView>(private val interactor: BaseInteracto
 
     open fun onDetachView() {
         this.mvpView = null
-        interactor.unsubscribe()
     }
 }

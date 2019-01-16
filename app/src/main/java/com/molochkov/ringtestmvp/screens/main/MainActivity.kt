@@ -26,7 +26,9 @@ class MainActivity : FragmentActivity(), MainView {
         setContentView(R.layout.activity_main)
         activityComponent.inject(this)
         presenter.onAttachView(this)
-        presenter.showStartScreen()
+        if (savedInstanceState == null) {
+            presenter.showStartScreen()
+        }
     }
 
     override fun onDestroy() {

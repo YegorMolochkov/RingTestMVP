@@ -8,7 +8,6 @@ import com.molochkov.ringtestmvp.core.navigation.ActivityNavigationHolder
 import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.screens.main.MainActivity
 import com.molochkov.ringtestmvp.screens.main.MainPresenter
-import com.molochkov.ringtestmvp.screens.main.domain.MainInteractor
 import com.molochkov.ringtestmvp.screens.main.navigation.ActivityMainRouter
 import com.molochkov.ringtestmvp.screens.main.navigation.MainRouter
 import com.molochkov.ringtestmvp.utils.photo.GlidePhotoLoader
@@ -39,16 +38,10 @@ class MainActivityModule(private val activity: MainActivity) {
 
     @Provides
     @ActivityScope
-    fun provideInteractor() = MainInteractor()
-
-    @Provides
-    @ActivityScope
     fun provideRouter(holder: NavigationHolder): MainRouter =
         ActivityMainRouter(holder)
 
     @Provides
     @ActivityScope
-    fun providePresenter(interactor: MainInteractor,
-                         router: MainRouter) =
-        MainPresenter(interactor, router)
+    fun providePresenter(router: MainRouter) = MainPresenter(router)
 }
