@@ -1,6 +1,6 @@
 package com.molochkov.ringtestmvp.screens.feed.di
 
-import com.example.gosha.ringTest.core.navigation.NavigationHolder
+import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.core.di.annotations.ScreenScope
 import com.molochkov.ringtestmvp.data.feed.FeedRepository
 import com.molochkov.ringtestmvp.data.feed.RedditFeedRepository

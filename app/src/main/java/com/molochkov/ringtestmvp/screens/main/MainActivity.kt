@@ -4,12 +4,12 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.molochkov.ringtestmvp.R
 import com.molochkov.ringtestmvp.core.RingApplication
-import com.molochkov.ringtestmvp.screens.feed.FeedFragment
 import com.molochkov.ringtestmvp.screens.main.di.DaggerMainActivityComponent
 import com.molochkov.ringtestmvp.screens.main.di.MainActivityComponent
 import com.molochkov.ringtestmvp.screens.main.di.MainActivityModule
+import javax.inject.Inject
 
-class MainActivity : FragmentActivity() {
+class MainActivity : FragmentActivity(), MainView {
 
     val activityComponent: MainActivityComponent by lazy {
         DaggerMainActivityComponent.builder()
@@ -18,12 +18,19 @@ class MainActivity : FragmentActivity() {
             .build()
     }
 
+    @Inject
+    lateinit var presenter: MainPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         activityComponent.inject(this)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainFrame, FeedFragment.newInstance())
-            .commit()
+        presenter.onAttachView(this)
+        presenter.showStartScreen()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDetachView()
     }
 }

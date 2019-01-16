@@ -1,7 +1,7 @@
 package com.molochkov.ringtestmvp.screens.main.di
 
 import android.content.Context
-import com.example.gosha.ringTest.core.navigation.NavigationHolder
+import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.core.di.ApplicationComponent
 import com.molochkov.ringtestmvp.core.di.annotations.ActivityContext
 import com.molochkov.ringtestmvp.core.di.annotations.ActivityScope

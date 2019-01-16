@@ -68,8 +68,8 @@ class FeedFragment : BaseFragment(), FeedView {
     }
 
     private fun setUpList() {
-        adapter = FeedAdapter(photoLoader) { url ->
-            presenter.showImage(url)
+        adapter = FeedAdapter(photoLoader) { view, url ->
+            presenter.showImage(view, url)
         }
         listRv.layoutManager = LinearLayoutManager(activity)
         listRv.adapter = adapter

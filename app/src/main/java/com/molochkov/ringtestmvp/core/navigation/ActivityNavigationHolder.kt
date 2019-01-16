@@ -1,4 +1,4 @@
-package com.example.gosha.ringTest.core.navigation
+package com.molochkov.ringtestmvp.core.navigation
 
 import android.view.View
 import androidx.fragment.app.Fragment

@@ -1,5 +1,6 @@
 package com.molochkov.ringtestmvp.screens.feed
 
+import android.widget.ImageView
 import com.molochkov.ringtestmvp.core.base.BasePresenter
 import com.molochkov.ringtestmvp.screens.feed.domain.FeedInteractor
 import com.molochkov.ringtestmvp.screens.feed.navigation.FeedRouter
@@ -13,5 +14,5 @@ class FeedPresenter(private val interactor: FeedInteractor,
         mvpView?.onLoadError()
     })
 
-    fun showImage(imageUrl: String) = router.showImage(imageUrl)
+    fun showImage(view: ImageView, imageUrl: String) = router.showImage(view, imageUrl)
 }

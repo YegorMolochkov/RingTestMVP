@@ -1,6 +1,8 @@
 package com.molochkov.ringtestmvp.screens.feed.navigation
 
+import android.widget.ImageView
+
 interface FeedRouter {
 
-    fun showImage(imageUrl: String)
+    fun showImage(view: ImageView, imageUrl: String)
 }

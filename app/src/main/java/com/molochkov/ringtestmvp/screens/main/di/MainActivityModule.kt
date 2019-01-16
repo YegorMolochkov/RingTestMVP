@@ -1,12 +1,16 @@
 package com.molochkov.ringtestmvp.screens.main.di
 
 import android.content.Context
-import com.example.gosha.ringTest.core.navigation.ActivityNavigationHolder
-import com.example.gosha.ringTest.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.R
 import com.molochkov.ringtestmvp.core.di.annotations.ActivityContext
 import com.molochkov.ringtestmvp.core.di.annotations.ActivityScope
+import com.molochkov.ringtestmvp.core.navigation.ActivityNavigationHolder
+import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.screens.main.MainActivity
+import com.molochkov.ringtestmvp.screens.main.MainPresenter
+import com.molochkov.ringtestmvp.screens.main.domain.MainInteractor
+import com.molochkov.ringtestmvp.screens.main.navigation.ActivityMainRouter
+import com.molochkov.ringtestmvp.screens.main.navigation.MainRouter
 import com.molochkov.ringtestmvp.utils.photo.GlidePhotoLoader
 import com.molochkov.ringtestmvp.utils.photo.PhotoLoader
 import dagger.Module
@@ -32,4 +36,19 @@ class MainActivityModule(private val activity: MainActivity) {
     @ActivityScope
     fun provideNavigationHolder(): NavigationHolder =
         ActivityNavigationHolder(activity.supportFragmentManager, R.id.mainFrame)
+
+    @Provides
+    @ActivityScope
+    fun provideInteractor() = MainInteractor()
+
+    @Provides
+    @ActivityScope
+    fun provideRouter(holder: NavigationHolder): MainRouter =
+        ActivityMainRouter(holder)
+
+    @Provides
+    @ActivityScope
+    fun providePresenter(interactor: MainInteractor,
+                         router: MainRouter) =
+        MainPresenter(interactor, router)
 }
