@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">RingTestMVP</string>
+    <string name="save_success">Saved</string>
+    <string name="save_fail">Saving failed</string>
 
     <plurals name="entry_info">
         <item quantity="one">Posted by %1$s %2$d hour ago.</item>
