@@ -1,8 +1,11 @@
 package com.molochkov.ringtestmvp.core.di
 
 import android.content.Context
+import com.molochkov.ringtestmvp.BuildConfig
 import com.molochkov.ringtestmvp.core.RingApplication
 import com.molochkov.ringtestmvp.core.di.annotations.ApplicationContext
+import com.molochkov.ringtestmvp.core.network.RetrofitServiceProvider
+import com.molochkov.ringtestmvp.core.network.ServiceProvider
 import com.molochkov.ringtestmvp.utils.Workers
 import dagger.Module
 import dagger.Provides
@@ -21,4 +24,8 @@ class ApplicationModule(var application: RingApplication) {
     @Provides
     @Singleton
     fun provideWorkers(): Workers = Workers(Schedulers.io(), AndroidSchedulers.mainThread())
+
+    @Provides
+    @Singleton
+    fun provideServiceProvider(): ServiceProvider = RetrofitServiceProvider(BuildConfig.BASE_URL)
 }

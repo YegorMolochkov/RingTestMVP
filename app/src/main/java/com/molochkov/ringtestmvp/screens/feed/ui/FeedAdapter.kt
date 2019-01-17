@@ -38,13 +38,13 @@ class FeedAdapter(private val photoLoader: PhotoLoader,
     inner class FeedViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(entry: FeedEntry) = with(entry) {
-            val hoursAgo = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - date).toInt()
+            val hoursAgo = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - created).toInt()
             view.infoTv.text =
                     view.context.resources.getQuantityString(R.plurals.entry_info, hoursAgo, author, hoursAgo)
             view.contentTv.text = title
             view.commentsNumberTv.text =
-                    view.context.resources.getQuantityString(R.plurals.comments_number, commentsNumber, commentsNumber)
-            image?.let { url ->
+                    view.context.resources.getQuantityString(R.plurals.comments_number, comments, comments)
+            thumbnail?.let { url ->
                 photoLoader.loadPhoto(url, view.image)
                 view.image.setOnClickListener {
                     clickListener(view.image, url)

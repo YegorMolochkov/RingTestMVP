@@ -3,6 +3,7 @@ package com.molochkov.ringtestmvp.core.di
 import android.content.Context
 import com.molochkov.ringtestmvp.core.RingApplication
 import com.molochkov.ringtestmvp.core.di.annotations.ApplicationContext
+import com.molochkov.ringtestmvp.core.network.ServiceProvider
 import com.molochkov.ringtestmvp.utils.Workers
 import dagger.Component
 import javax.inject.Singleton
@@ -17,4 +18,6 @@ interface ApplicationComponent {
     fun applicationContext(): Context
 
     fun workers(): Workers
+
+    fun serviceProvider(): ServiceProvider
 }

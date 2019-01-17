@@ -11,6 +11,9 @@ class FeedInteractor(private val repository: FeedRepository,
     fun getFeed(onDone: (List<FeedEntry>) -> Unit,
                 onError: (Throwable) -> Unit) {
         disposables.add(repository.getFeed()
+            .map { response ->
+                response.data.children.map { it.data }
+            }
             .subscribeOn(workers.subscribe)
             .observeOn(workers.observe)
             .subscribe(onDone, onError))
