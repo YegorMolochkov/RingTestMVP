@@ -53,6 +53,9 @@ class FeedAdapter(private val photoLoader: PhotoLoader,
                     clickListener(view.image, thumbnail)
                 }
             }
+            view.image.setOnClickListener {
+                imageUrl?.let { clickListener(view.image, imageUrl) }
+            }
         }
     }
 }

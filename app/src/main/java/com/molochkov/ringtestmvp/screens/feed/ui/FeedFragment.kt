@@ -1,6 +1,7 @@
 package com.molochkov.ringtestmvp.screens.feed.ui
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class FeedFragment : BaseFragment(), FeedView {
     companion object {
 
         private const val SCROLL_DIRECTION = -1
+        private const val LIST_STATE_KEY = "LIST_STATE_KEY"
         fun newInstance() = FeedFragment()
     }
 
@@ -35,6 +37,8 @@ class FeedFragment : BaseFragment(), FeedView {
     @Inject
     lateinit var photoLoader: PhotoLoader
     private lateinit var adapter: FeedAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private var listState: Parcelable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +63,21 @@ class FeedFragment : BaseFragment(), FeedView {
         super.onDestroyView()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(LIST_STATE_KEY, layoutManager.onSaveInstanceState())
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        savedInstanceState?.let {
+            listState = it.getParcelable(LIST_STATE_KEY)
+        }
+    }
+
     override fun onFeedLoaded(feed: List<FeedEntry>) {
         adapter.addItems(feed)
+        listState?.let { layoutManager.onRestoreInstanceState(it) }
     }
 
     override fun onLoadError() {
@@ -69,9 +86,11 @@ class FeedFragment : BaseFragment(), FeedView {
 
     private fun setUpList() {
         adapter = FeedAdapter(photoLoader) { view, url ->
+            listState = layoutManager.onSaveInstanceState()
             presenter.showImage(view, url)
         }
-        listRv.layoutManager = LinearLayoutManager(activity)
+        layoutManager = LinearLayoutManager(activity)
+        listRv.layoutManager = layoutManager
         listRv.adapter = adapter
         listRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 

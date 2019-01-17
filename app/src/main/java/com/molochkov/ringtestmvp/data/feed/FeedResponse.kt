@@ -15,4 +15,5 @@ data class FeedEntryDto(val author: String,
                         val thumbnail: String,
                         val created: Long,
                         val title: String,
+                        val url : String,
                         @SerializedName("num_comments") val comments: Int)
