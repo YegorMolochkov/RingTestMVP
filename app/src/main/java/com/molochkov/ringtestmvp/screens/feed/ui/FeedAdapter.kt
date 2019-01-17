@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.molochkov.ringtestmvp.R
-import com.molochkov.ringtestmvp.data.feed.FeedEntry
+import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
 import com.molochkov.ringtestmvp.utils.photo.PhotoLoader
 import kotlinx.android.synthetic.main.item_feed.view.*
 import java.util.concurrent.TimeUnit
@@ -44,10 +44,13 @@ class FeedAdapter(private val photoLoader: PhotoLoader,
             view.contentTv.text = title
             view.commentsNumberTv.text =
                     view.context.resources.getQuantityString(R.plurals.comments_number, comments, comments)
-            thumbnail?.let { url ->
-                photoLoader.loadPhoto(url, view.image)
+            if (thumbnail == null) {
+                view.image.visibility = View.GONE
+            } else {
+                view.image.visibility = View.VISIBLE
+                photoLoader.loadPhoto(thumbnail, view.image)
                 view.image.setOnClickListener {
-                    clickListener(view.image, url)
+                    clickListener(view.image, thumbnail)
                 }
             }
         }

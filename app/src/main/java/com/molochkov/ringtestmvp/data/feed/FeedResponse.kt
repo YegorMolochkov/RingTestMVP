@@ -9,10 +9,10 @@ data class FeedData(@SerializedName("modhash") val hash: String,
                     val children: List<FeedChild>)
 
 data class FeedChild(val kind: String,
-                     val data: FeedEntry)
+                     val data: FeedEntryDto)
 
-data class FeedEntry(val author: String,
-                     val thumbnail: String?,
-                     val created: Long,
-                     val title: String,
-                     @SerializedName("num_comments") val comments: Int)
+data class FeedEntryDto(val author: String,
+                        val thumbnail: String,
+                        val created: Long,
+                        val title: String,
+                        @SerializedName("num_comments") val comments: Int)

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.molochkov.ringtestmvp.R
 import com.molochkov.ringtestmvp.core.base.BaseFragment
-import com.molochkov.ringtestmvp.data.feed.FeedEntry
+import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
 import com.molochkov.ringtestmvp.screens.feed.di.DaggerFeedComponent
 import com.molochkov.ringtestmvp.screens.feed.di.FeedModule
 import com.molochkov.ringtestmvp.screens.feed.domain.FeedPresenter

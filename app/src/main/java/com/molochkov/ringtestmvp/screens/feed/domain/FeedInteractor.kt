@@ -1,8 +1,9 @@
 package com.molochkov.ringtestmvp.screens.feed.domain
 
 import com.molochkov.ringtestmvp.core.base.BaseInteractor
-import com.molochkov.ringtestmvp.data.feed.FeedEntry
 import com.molochkov.ringtestmvp.data.feed.FeedRepository
+import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
+import com.molochkov.ringtestmvp.screens.feed.data.toFeedEntry
 import com.molochkov.ringtestmvp.utils.Workers
 
 class FeedInteractor(private val repository: FeedRepository,
@@ -12,7 +13,7 @@ class FeedInteractor(private val repository: FeedRepository,
                 onError: (Throwable) -> Unit) {
         disposables.add(repository.getFeed()
             .map { response ->
-                response.data.children.map { it.data }
+                response.data.children.map { it.data.toFeedEntry() }
             }
             .subscribeOn(workers.subscribe)
             .observeOn(workers.observe)

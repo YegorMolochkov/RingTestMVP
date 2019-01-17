@@ -1,7 +1,7 @@
 package com.molochkov.ringtestmvp.screens.feed.ui
 
 import com.molochkov.ringtestmvp.core.base.BaseView
-import com.molochkov.ringtestmvp.data.feed.FeedEntry
+import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
 
 interface FeedView : BaseView {
 
