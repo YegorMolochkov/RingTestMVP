@@ -55,6 +55,7 @@ class FeedFragment : BaseFragment(), FeedView {
         super.onViewCreated(view, savedInstanceState)
         setUpList()
         presenter.onAttachView(this)
+        presenter.doOnStart()
         if (savedInstanceState == null) presenter.loadMore()
     }
 
@@ -82,6 +83,11 @@ class FeedFragment : BaseFragment(), FeedView {
 
     override fun onLoadError() {
         //TODO
+    }
+
+    override fun showLoading() {
+        super.showLoading()
+        listState = layoutManager.onSaveInstanceState()
     }
 
     private fun setUpList() {

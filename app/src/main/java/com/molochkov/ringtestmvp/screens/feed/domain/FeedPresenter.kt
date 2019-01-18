@@ -2,15 +2,13 @@ package com.molochkov.ringtestmvp.screens.feed.domain
 
 import android.widget.ImageView
 import com.molochkov.ringtestmvp.core.base.BasePresenter
-import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
-import com.molochkov.ringtestmvp.screens.feed.ui.FeedView
 import com.molochkov.ringtestmvp.screens.feed.navigation.FeedRouter
+import com.molochkov.ringtestmvp.screens.feed.ui.FeedView
 
 class FeedPresenter(private val interactor: FeedInteractor,
                     private val router: FeedRouter) : BasePresenter<FeedView>() {
 
-    override fun onAttachView(mvpView: FeedView) {
-        super.onAttachView(mvpView)
+    fun doOnStart() {
         interactor.getFeed({
             this.mvpView?.onFeedLoaded(it)
         }, {
@@ -21,8 +19,8 @@ class FeedPresenter(private val interactor: FeedInteractor,
     fun loadMore() {
         mvpView?.showLoading()
         interactor.loadMoreFeed({
-            mvpView?.onFeedLoaded(it)
             mvpView?.hideLoading()
+            mvpView?.onFeedLoaded(it)
         }, {
             mvpView?.hideLoading()
             mvpView?.onLoadError()
@@ -34,6 +32,7 @@ class FeedPresenter(private val interactor: FeedInteractor,
 
     override fun onDetachView() {
         super.onDetachView()
+        mvpView?.hideLoading()
         interactor.unsubscribe()
     }
 }
