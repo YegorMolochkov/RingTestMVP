@@ -53,9 +53,9 @@ class FeedFragment : BaseFragment(), FeedView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.onAttachView(this)
         setUpList()
-        presenter.getFeed()
+        presenter.onAttachView(this)
+        if (savedInstanceState == null) presenter.loadMore()
     }
 
     override fun onDestroyView() {
@@ -97,7 +97,7 @@ class FeedFragment : BaseFragment(), FeedView {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(SCROLL_DIRECTION)) {
-                    presenter.getFeed()
+                    presenter.loadMore()
                 }
             }
         })

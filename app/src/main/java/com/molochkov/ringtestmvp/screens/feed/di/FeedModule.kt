@@ -1,13 +1,10 @@
 package com.molochkov.ringtestmvp.screens.feed.di
 
-import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.core.di.annotations.ScreenScope
-import com.molochkov.ringtestmvp.core.network.ServiceProvider
+import com.molochkov.ringtestmvp.core.navigation.NavigationHolder
 import com.molochkov.ringtestmvp.data.feed.FeedRepository
-import com.molochkov.ringtestmvp.data.feed.FeedService
-import com.molochkov.ringtestmvp.data.feed.RedditFeedRepository
-import com.molochkov.ringtestmvp.screens.feed.domain.FeedPresenter
 import com.molochkov.ringtestmvp.screens.feed.domain.FeedInteractor
+import com.molochkov.ringtestmvp.screens.feed.domain.FeedPresenter
 import com.molochkov.ringtestmvp.screens.feed.navigation.ActivityFeedRouter
 import com.molochkov.ringtestmvp.screens.feed.navigation.FeedRouter
 import com.molochkov.ringtestmvp.utils.Workers
@@ -16,16 +13,6 @@ import dagger.Provides
 
 @Module
 class FeedModule {
-
-    @Provides
-    @ScreenScope
-    fun provideService(serviceProvider: ServiceProvider): FeedService =
-        serviceProvider.createService(FeedService::class.java)
-
-    @Provides
-    @ScreenScope
-    fun provideRepository(service: FeedService): FeedRepository =
-        RedditFeedRepository(service)
 
     @Provides
     @ScreenScope
