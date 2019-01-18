@@ -4,5 +4,5 @@ import io.reactivex.Single
 
 interface FeedRepository {
 
-    fun getFeed(): Single<FeedResponse>
+    fun getFeed(lastId: String?): Single<FeedResponse>
 }

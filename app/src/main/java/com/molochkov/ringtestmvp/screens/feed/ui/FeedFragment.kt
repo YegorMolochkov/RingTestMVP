@@ -97,7 +97,7 @@ class FeedFragment : BaseFragment(), FeedView {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(SCROLL_DIRECTION)) {
-                    //TODO
+                    presenter.getFeed()
                 }
             }
         })

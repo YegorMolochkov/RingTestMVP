@@ -9,10 +9,14 @@ import com.molochkov.ringtestmvp.utils.Workers
 class FeedInteractor(private val repository: FeedRepository,
                      private val workers: Workers) : BaseInteractor() {
 
+    private var lastId: String? = null
+
     fun getFeed(onDone: (List<FeedEntry>) -> Unit,
                 onError: (Throwable) -> Unit) {
-        disposables.add(repository.getFeed()
-            .map { response ->
+        disposables.add(repository.getFeed(lastId)
+            .doOnSuccess {
+                lastId = it.data.after
+            }.map { response ->
                 response.data.children.map { it.data.toFeedEntry() }
             }
             .subscribeOn(workers.subscribe)
