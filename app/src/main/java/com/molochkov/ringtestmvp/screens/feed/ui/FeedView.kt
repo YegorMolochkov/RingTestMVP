@@ -8,4 +8,8 @@ interface FeedView : BaseView {
     fun onFeedLoaded(feed: List<FeedEntry>)
 
     fun onLoadError()
+
+    fun showLoading()
+
+    fun hideLoading()
 }

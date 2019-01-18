@@ -21,7 +21,7 @@ class FeedFragment : BaseFragment(), FeedView {
 
     companion object {
 
-        private const val SCROLL_DIRECTION = -1
+        private const val SCROLL_DIRECTION = 1
         private const val LIST_STATE_KEY = "LIST_STATE_KEY"
         fun newInstance() = FeedFragment()
     }
