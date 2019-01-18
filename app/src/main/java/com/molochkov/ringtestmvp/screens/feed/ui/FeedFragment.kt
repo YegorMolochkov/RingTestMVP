@@ -39,6 +39,7 @@ class FeedFragment : BaseFragment(), FeedView {
     private lateinit var adapter: FeedAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private var listState: Parcelable? = null
+    private var alreadyLoaded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,10 @@ class FeedFragment : BaseFragment(), FeedView {
         setUpList()
         presenter.onAttachView(this)
         presenter.doOnStart()
-        if (savedInstanceState == null) presenter.loadMore()
+        if (savedInstanceState == null && !alreadyLoaded){
+            alreadyLoaded = true
+            presenter.loadMore()
+        }
     }
 
     override fun onDestroyView() {
