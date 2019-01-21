@@ -57,7 +57,7 @@ class FeedFragment : BaseFragment(), FeedView {
         setUpList()
         presenter.onAttachView(this)
         presenter.doOnStart()
-        if (savedInstanceState == null && !alreadyLoaded){
+        if (savedInstanceState == null && !alreadyLoaded) {
             alreadyLoaded = true
             presenter.loadMore()
         }
@@ -95,9 +95,9 @@ class FeedFragment : BaseFragment(), FeedView {
     }
 
     private fun setUpList() {
-        adapter = FeedAdapter(photoLoader) { view, url ->
+        adapter = FeedAdapter(photoLoader) { url ->
             listState = layoutManager.onSaveInstanceState()
-            presenter.showImage(view, url)
+            presenter.showImage(url)
         }
         layoutManager = LinearLayoutManager(activity)
         listRv.layoutManager = layoutManager

@@ -3,7 +3,6 @@ package com.molochkov.ringtestmvp.data.feed
 import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
 import com.molochkov.ringtestmvp.screens.feed.data.toFeedEntry
 import io.reactivex.Single
-import java.util.concurrent.TimeUnit
 
 class RedditFeedRepository(private val service: FeedService) : FeedRepository {
 
@@ -20,7 +19,6 @@ class RedditFeedRepository(private val service: FeedService) : FeedRepository {
 
     override fun loadMoreFeed(): Single<List<FeedEntry>> {
         return service.getFeed(PAGE_SIZE, lastId)
-            .delay(3L, TimeUnit.SECONDS)
             .doOnSuccess { lastId = it.data.after }.map { response ->
                 response.data.children.map { it.data.toFeedEntry() }
             }.doOnSuccess { feed.addAll(it) }

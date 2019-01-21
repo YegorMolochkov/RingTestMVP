@@ -1,6 +1,5 @@
 package com.molochkov.ringtestmvp.screens.feed.domain
 
-import android.widget.ImageView
 import com.molochkov.ringtestmvp.core.base.BasePresenter
 import com.molochkov.ringtestmvp.screens.feed.navigation.FeedRouter
 import com.molochkov.ringtestmvp.screens.feed.ui.FeedView
@@ -28,7 +27,7 @@ class FeedPresenter(private val interactor: FeedInteractor,
     }
 
 
-    fun showImage(view: ImageView, imageUrl: String) = router.showImage(view, imageUrl)
+    fun showImage(imageUrl: String) = router.showImage(imageUrl)
 
     override fun onDetachView() {
         super.onDetachView()
