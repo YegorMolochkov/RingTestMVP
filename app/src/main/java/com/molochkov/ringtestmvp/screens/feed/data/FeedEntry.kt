@@ -1,6 +1,7 @@
 package com.molochkov.ringtestmvp.screens.feed.data
 
 import com.molochkov.ringtestmvp.data.feed.FeedEntryDto
+import java.util.concurrent.TimeUnit
 
 private const val IMAGE_EXTENSION = ".jpg"
 
@@ -14,7 +15,7 @@ data class FeedEntry(val author: String,
 fun FeedEntryDto.toFeedEntry(): FeedEntry = with(this) {
     return@with FeedEntry(author,
         if (thumbnail.endsWith(IMAGE_EXTENSION)) thumbnail else null,
-        created,
+        TimeUnit.SECONDS.toMillis(created),
         title,
         if (url.endsWith(IMAGE_EXTENSION)) url else null,
         comments)
