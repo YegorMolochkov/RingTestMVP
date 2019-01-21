@@ -2,6 +2,9 @@ package com.molochkov.ringtestmvp.utils.photo
 
 import android.widget.ImageView
 
+/**
+ * photo loading util
+ */
 interface PhotoLoader {
 
     /**

@@ -4,6 +4,9 @@ import androidx.fragment.app.Fragment
 import com.molochkov.ringtestmvp.screens.main.ui.MainActivity
 import com.molochkov.ringtestmvp.utils.LoadingDialog
 
+/**
+ * parent fragment for all fragments in project
+ */
 abstract class BaseFragment : Fragment() {
 
     private lateinit var loadingDialog: LoadingDialog
@@ -13,6 +16,9 @@ abstract class BaseFragment : Fragment() {
             return activity as MainActivity
         }
 
+    /**
+     * shows loading dialog
+     */
     open fun showLoading() {
         if (!::loadingDialog.isInitialized) loadingDialog = LoadingDialog.newInstance()
         if (!loadingDialog.isAdded) {
@@ -20,6 +26,9 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+    /**
+     * hides loading dialog
+     */
     open fun hideLoading() {
         if (::loadingDialog.isInitialized) loadingDialog.dismiss()
     }

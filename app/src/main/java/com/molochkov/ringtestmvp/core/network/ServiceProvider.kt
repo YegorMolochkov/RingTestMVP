@@ -1,5 +1,8 @@
 package com.molochkov.ringtestmvp.core.network
 
+/**
+ * provides network services
+ */
 interface ServiceProvider {
 
     /**
