@@ -19,7 +19,8 @@ class RedditFeedRepository(private val service: FeedService) : FeedRepository {
 
     override fun loadMoreFeed(): Single<List<FeedEntry>> {
         return service.getFeed(PAGE_SIZE, lastId)
-            .doOnSuccess { lastId = it.data.after }.map { response ->
+            .doOnSuccess { lastId = it.data.after }
+            .map { response ->
                 response.data.children.map { it.data.toFeedEntry() }
             }.doOnSuccess { feed.addAll(it) }
     }

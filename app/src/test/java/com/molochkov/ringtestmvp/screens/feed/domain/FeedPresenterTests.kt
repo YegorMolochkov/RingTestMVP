@@ -1,6 +1,6 @@
 package com.molochkov.ringtestmvp.screens.feed.domain
 
-import com.molochkov.ringtestmvp.IMAGE_URL
+import com.molochkov.ringtestmvp.RANDOM_TEXT
 import com.molochkov.ringtestmvp.TestNetworkException
 import com.molochkov.ringtestmvp.feed
 import com.molochkov.ringtestmvp.screens.feed.data.FeedEntry
@@ -72,7 +72,7 @@ class FeedPresenterTests {
     }
 
     @Test
-    fun loadMoreFair() {
+    fun loadMoreFail() {
         `when`(interactor.loadMoreFeed(any(), any())).then {
             (it.arguments[1] as (Throwable) -> Unit).invoke(TestNetworkException())
         }
@@ -87,7 +87,7 @@ class FeedPresenterTests {
 
     @Test
     fun showImage() {
-        presenter.showImage(IMAGE_URL)
-        verify(router).showImage(IMAGE_URL)
+        presenter.showImage(RANDOM_TEXT)
+        verify(router).showImage(RANDOM_TEXT)
     }
 }
